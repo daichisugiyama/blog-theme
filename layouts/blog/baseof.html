@@ -5,6 +5,7 @@
     <title>{{ if not .IsNode }}{{ .Title }} - {{ end }}Blog | {{ .Site.Title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {{ partial "site_css" . }}
 </head>
 
 <body style="background-color: #f6f6f6">
