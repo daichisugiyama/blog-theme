@@ -1,5 +1,5 @@
 .sidebar {
 	position: -webkit-sticky;
 	position: sticky;
-	margin-top: 100px;
+	top: 100px;
 }
