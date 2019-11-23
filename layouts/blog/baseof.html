@@ -1,18 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
+  <head>
+    {{ partial "meta.html" . }}
+    {{ with .Site.Params.googlefonts }}
+    <link href="{{ . }}" rel="stylesheet">
+    {{ else }}
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+    {{ end }}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>{{ if not .IsNode }}{{ .Title }} - {{ end }}{{ .Site.Title }} Memo</title>
+  </head>
 
-<head>
-    <title>{{ if not .IsNode }}{{ .Title }} - {{ end }}Blog | {{ .Site.Title }}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {{ partial "site_css" . }}
-</head>
+  <body style="background-color: #f6f6f6">
 
-<body style="background-color: #f6f6f6">
+    <header class="fixed-top">
+      <div class="container">
+        <div class=" ontainer-fluid">
+          <div class="row align-items-center">
+            <div class="col-lg-6 d-none d-lg-block text-left">
+                <nav>
+                    <ul class="list-inline">
+                        <li class="list-inline-item ml-4"><a href="/works/">Works</a></li>
+                        <li class="list-inline-item ml-4"><a href="/blog/">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-4 d-none d-lg-block text-center mt-3">
+                <p class=""><img src="" alt="">{{ .Site.Title }}</a></p>
+            </div>
+            <div class="col-8 d-lg-none d-block offset-2 text-center mt-3">
+                <p class=""><img src="" alt="">{{ .Site.Title }}</a></p>
+            </div>
+            <div class="col-lg-2 d-none d-lg-block text-left">
+                <!-- <a href="https://twitter.com/sugiyama_ars"><i class="fab fa-twitter fa-2x icon-twitter"></i></a> -->
+                <a href="https://facebook.com/daichi.sugiyama.2012"><i class="fab fa-facebook-square fa-2x icon-facebook"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+                <a href=""><i class="fab fa-2x fa-envelope"></i></a>
+            </div>
+            <div class="col-2 d-lg-none float-right text-right align-self-center">
+                <a href=""><i class="fas fa-bars fa-2x "></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+      <!-- {{ partial "navbar" . }} -->
 
-    {{ partial "navbar" . }}
-
-	<div class="container">
+  <main>
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <main class="col-12 col-lg-9">
@@ -24,11 +62,20 @@
             </div>
         </div>
     </div>
+  </main>
 
-    {{ partial "site_js" . }}
-
-    {{ partial "site_footer" . }}
-
-</body>
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 site-footer">
+                    <p class="text-center">(C) 2019 Daichi Sugiyama</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 
 </html>
