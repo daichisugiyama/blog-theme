@@ -1,5 +1,35 @@
 <div class="sidebar">
 
+{{ define "categoryTree" }}
+    {{ range .Sections.ByWeight}}
+            <li>
+                {{ if gt (len .Sections) 0}}
+                    <details open>
+                        <summary>
+                            <a href="{{.Permalink}}">{{ .Title }}</a><span>({{template "numArticle" .}})</span>
+                        </summary>
+                        <ul>
+                            {{ if gt (len .Sections) 0}}
+                                {{ template "categoryTree" . }}
+                            {{end}}
+                        </ul>
+                    </details>
+                {{ else }}
+                    <i class="fas fa-folder-open  fa-fw"></i><a
+                        href="{{.Permalink}}">{{ .Title }}</a><span>({{template "numArticle" .}})</span>
+                {{ end }}
+            </li>
+    {{ end }}
+{{ end }}
+
+    <header><a href="{{ .Site.BaseURL }}categories">CATEGORIES</a></header>
+    {{ $home := .Site.Home }}
+    <nav class="category-tree-side">
+        <ul>
+            {{ template "categoryTree" $home }}
+        </ul>
+    </nav>
+
     Category
     <nav>
         <ul class="">
