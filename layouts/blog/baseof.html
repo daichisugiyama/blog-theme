@@ -61,6 +61,13 @@
       <div class="container">
         <div class="container-fluid">
           <div class="row">
+            <div class="col-12">
+              <ol class="breadcrumb">
+                {{- template "breadcrumb" (dict "node" . "start" .) }}
+              </ol>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-12 col-lg-9">
               {{ block "main" . }}{{ end }}
             </div>
