@@ -17,6 +17,15 @@ main {
     padding: 0.5em 0.5em;
 }
 
+.card-title {
+	font-size: 16px;
+}
+
+.card-subtitle {
+	font-size: 11px;
+}
+
+
 .card-img-top {
     width: 180px;
     height: 160px;
