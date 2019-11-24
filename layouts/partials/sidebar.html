@@ -28,7 +28,7 @@
 {{ end }}
 
     <header><a href="{{ .Site.BaseURL }}categories">CATEGORIES</a></header>
-    {{ $home := .Section }}
+    {{ $home := .Site.Home }}
     <nav class="category-tree-side">
         <ul>
             {{ template "categoryTree" $home }}
@@ -36,7 +36,7 @@
     </nav>
 
 {{ define "categoryTree" }}
-    {{ range .Sections.ByWeight}}
+    {{ range .Sections.ByDate}}
             <li>
                 {{ if gt (len .Sections) 0}}
                     <details open>
