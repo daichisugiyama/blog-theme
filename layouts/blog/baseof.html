@@ -2,17 +2,43 @@
 <html lang="ja">
 
   <head>
-    {{ partial "meta.html" . }}
+    <meta charset="utf-8">
+    <base href="{{ .Site.BaseURL }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title> 
+        {{ if not .IsNode }}{{ .Title }} - {{ end }}{{ .Site.Title }} Memo
+    </title>
+
+    {{ $description := ""}}
+    {{ if .Description }}
+        {{ $description = .Description }}
+    {{ else if .Summary }}
+        {{ $description = .Summary }}
+    {{ else if isset .Site.Params "description" }}
+        {{ $description = .Site.Params.description }}
+    {{ end }}
+    {{ with $description }}
+      <meta name="description" content="{{ . }}" />
+    {{ end }}
+
+    {{ with .Site.Params.author }}
+      <meta name="author" content="{{ . }}" />
+    {{ end }}
+
+    {{ partial "head_og" . }}
+    {{ partial "head_style" . }}
+
+    <!-- {{ partial "meta.html" . }} -->
     {{ with .Site.Params.googlefonts }}
     <link href="{{ . }}" rel="stylesheet">
     {{ else }}
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
     {{ end }}
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <title>{{ if not .IsNode }}{{ .Title }} - {{ end }}{{ .Site.Title }} Memo</title>
+
   </head>
 
   <body style="background-color: #f6f6f6">

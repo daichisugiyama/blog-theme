@@ -1,5 +1,15 @@
 <div class="sidebar">
 
+
+
+    <header><a href="{{ .Site.BaseURL }}categories">CATEGORIES</a></header>
+    {{ $home := .Site.Home }}
+    <nav class="category-tree-side">
+        <ul>
+            {{ template "categoryTree" $home }}
+        </ul>
+    </nav>
+
 {{ define "categoryTree" }}
     {{ range .Sections.ByWeight}}
             <li>
@@ -21,14 +31,6 @@
             </li>
     {{ end }}
 {{ end }}
-
-    <header><a href="{{ .Site.BaseURL }}categories">CATEGORIES</a></header>
-    {{ $home := .Site.Home }}
-    <nav class="category-tree-side">
-        <ul>
-            {{ template "categoryTree" $home }}
-        </ul>
-    </nav>
 
     {{define "numArticle"}}
     {{$indexScratch := newScratch}}

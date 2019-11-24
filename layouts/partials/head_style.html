@@ -1,0 +1,27 @@
+<!-- 
+SassからCSSに変換
+ref.
+[1] https://gohugo.io/hugo-pipes/scss-sass/
+ -->
+<!-- 
+{{ $style := resources.Get "scss/style.scss" | toCSS | fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink }}" />
+-->
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- 
+Bootstrap CDN
+ref.
+[1] https://getbootstrap.com/docs/4.3/getting-started/introduction/
+ -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!--
+Fontawesome CDN
+公式はCDNの配布を中止。有志のCDNを用いた。
+ref. 
+[1] http://www.webdesignleaves.com/pr/plugins/fontawesome_01.html
+[2] https://tadtadya.com/html-css-fontawesome-quit-official-cdn
+[3] https://saruwakakun.com/html-css/basic/font-awesome
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
