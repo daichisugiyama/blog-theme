@@ -1,4 +1,44 @@
 {{ define "main" }}
+
+{{$indexScratch := newScratch}}
+{{$indexScratch.Set "articleList" .Pages}}
+
+{{if not .IsHome }}
+
+    {{ range .Sections.Reverse}}
+    {{ $indexScratch.Add "articleList" .Pages}}
+    
+    {{ if ge (len .Section) 0}}
+        {{ range .Sections.Reverse}}
+        {{ $indexScratch.Add "articleList" .Pages}}
+        
+        {{ if ge (len .Section) 0}}
+            {{ range .Sections.Reverse}}
+            {{ $indexScratch.Add "articleList" .Pages}}
+            
+            {{ if ge (len .Section) 0}}
+                {{ range .Sections.Reverse}}
+                    {{ $indexScratch.Add "articleList" .Pages}}
+                {{ end }}
+            {{ end }}
+        
+            {{ end }}
+        {{ end }}
+        
+        {{ end }}
+    {{ end }}
+    
+    {{ end }}
+{{ end }}
+
+{{ $paginator := .Paginate (where ($indexScratch.Get "articleList") "Type" "!=" "page").ByDate.Reverse }}
+
+{{ range $paginator.Pages}}
+    <div class="mcol c6">{{ .Render "li" }}</div>
+{{ end }}
+
+{{ $indexScratch.Delete "articleList"}}
+
 <h1>All</h1>
 <div class="card">
     <h*><span class="badge badge-secondary">プログラミング</span></h*>
