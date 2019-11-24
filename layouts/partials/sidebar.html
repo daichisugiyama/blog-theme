@@ -1,5 +1,70 @@
 <div class="sidebar">
 
+{{ define "categoryTree" }}
+    {{ range .Sections.ByWeight}}
+            <li>
+                {{ if gt (len .Sections) 0}}
+                    <details open>
+                        <summary>
+                            <a href="{{.Permalink}}">{{ .Title }}</a><span>({{template "numArticle" .}})</span>
+                        </summary>
+                        <ul>
+                            {{ if gt (len .Sections) 0}}
+                                {{ template "categoryTree" . }}
+                            {{end}}
+                        </ul>
+                    </details>
+                {{ else }}
+                    <i class="fas fa-folder-open  fa-fw"></i><a
+                        href="{{.Permalink}}">{{ .Title }}</a><span>({{template "numArticle" .}})</span>
+                {{ end }}
+            </li>
+    {{ end }}
+{{ end }}
+
+    <header><a href="{{ .Site.BaseURL }}categories">CATEGORIES</a></header>
+    {{ $home := .Site.Home }}
+    <nav class="category-tree-side">
+        <ul>
+            {{ template "categoryTree" $home }}
+        </ul>
+    </nav>
+
+    {{define "numArticle"}}
+    {{$indexScratch := newScratch}}
+    {{$indexScratch.Set "numArticle" (len .Pages)}}
+
+    {{if not .IsHome }}
+
+        {{ range .Sections.Reverse}}
+            {{ $indexScratch.Add "numArticle" (len .Pages)}}
+
+            {{ if ge (len .Section) 0}}
+                {{ range .Sections.Reverse}}
+                    {{ $indexScratch.Add "numArticle" (len .Pages)}}
+
+                    {{ if ge (len .Section) 0}}
+                        {{ range .Sections.Reverse}}
+                            {{ $indexScratch.Add "numArticle" (len .Pages)}}
+
+                            {{ if ge (len .Section) 0}}
+                                {{ range .Sections.Reverse}}
+                                   {{ $indexScratch.Add "numArticle" (len .Pages)}}
+                                {{ end }}
+                            {{ end }}
+
+                        {{ end }}
+                    {{ end }}
+
+                {{ end }}
+            {{ end }}
+
+        {{ end }}
+    {{ end }}
+
+    {{ $indexScratch.Get "numArticle"}}
+    {{ $indexScratch.Delete "numArticle"}}
+{{end}}
 
     Category
     <nav>
