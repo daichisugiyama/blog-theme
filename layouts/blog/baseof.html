@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title> 
-        {{ if not .IsNode }}{{ .Title }} - {{ end }}{{ .Site.Title }} Memo
+      {{ .Title}}{{ if ne .Title .Site.Title }} | {{ .Site.Title }}{{ end }}
     </title>
 
     {{ $description := ""}}
@@ -37,7 +37,7 @@
     {{ else }}
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
     {{ end }}
-    <link rel="stylesheet" href="/css/style.css">
+
 
   </head>
 
