@@ -52,7 +52,7 @@
                     <div class="m-entry__header-date">
                         <time>{{ .PublishDate.Format "2006/01/02" }}</time>
                     </div>
-                    {{ $eyecache_data := partial "function/get_eyecache_image" . }}
+                    {{/* $eyecache_data := partial "function/get_eyecache_image" . */}}
                     {{ if $eyecache_data.eyecache }}
                         <div class="m-entry__header-eyecache">
                             <img class="m-entry__header-eyecache-img" src="{{ $eyecache_data.eyecache.Permalink }}" >
