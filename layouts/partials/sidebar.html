@@ -28,7 +28,7 @@
 {{ end }}
 
     <header><a href="{{ .Site.BaseURL }}categories">CATEGORIES</a></header>
-    {{ $home := .Site.Home }}
+    {{ $home := .Section }}
     <nav class="category-tree-side">
         <ul>
             {{ template "categoryTree" $home }}
