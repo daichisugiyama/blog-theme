@@ -5,11 +5,11 @@ name = "segayama"
 license = "MIT"
 licenselink = "https://github.com/segayama/hugo-mytheme/master/LICENSE"
 description = ""
-homepage = "https://daichisugiyama.com/"
+homepage = "https://segayama.com/"
 tags = []
 features = []
 min_version = "0.41"
 
 [author]
   name = "Daichi Sugiyama"
-  homepage = "https://daichisugiyama.com/"
+  homepage = "https://segayama.com/"
