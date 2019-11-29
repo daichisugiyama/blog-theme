@@ -1,15 +1,15 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
-name = "segayama"
+name = "sugiyama"
 license = "MIT"
-licenselink = "https://github.com/segayama/hugo-mytheme/master/LICENSE"
+licenselink = "https://github.com/daichisugiyama/blog-theme/master/LICENSE"
 description = ""
-homepage = "https://segayama.com/"
+homepage = "https://daichisugiyama.com/"
 tags = []
 features = []
 min_version = "0.41"
 
 [author]
   name = "Daichi Sugiyama"
-  homepage = "https://segayama.com/"
+  homepage = "https://daichisugiyama.com/"
