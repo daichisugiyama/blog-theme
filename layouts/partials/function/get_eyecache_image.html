@@ -19,7 +19,7 @@
         {{ $width = $eyecache_image.Width }}
         {{ $height = $eyecache_image.Height }}
     {{ else }}
-        {{ $path := printf "/images/%s" $eyecache_param }}
+        {{ $path := printf "/assets/%s" $eyecache_param }}
         {{ if fileExists $path }}
             {{ $eyecache_image = resources.Get $eyecache_param | fingerprint }}
             {{ $imageConfig := imageConfig $path }}
@@ -32,7 +32,7 @@
     {{ with .Site.Params.eyecatch }}{{ $eyecache_param = . }}{{ end }}
     {{ with .Site.Params.featured_image }}{{ $eyecache_param = . }}{{ end }}
 
-    {{ $path := printf "/images/%s" $eyecache_param }}
+    {{ $path := printf "/assets/%s" $eyecache_param }}
     {{ if fileExists $path }}
         {{ $eyecache_image = resources.Get $eyecache_param | fingerprint  }}
         {{ $imageConfig := imageConfig $path }}
